@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         hero_list.adapter = heroListAdapter
 
+
         callService()
     }
 
