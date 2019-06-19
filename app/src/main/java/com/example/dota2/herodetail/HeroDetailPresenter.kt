@@ -28,12 +28,15 @@ class HeroDetailPresenter(
     override fun callService(heroId: String) {
         service.getHeroDetail(heroId).enqueue(object : Callback<HeroDetail?> {
             override fun onFailure(call: Call<HeroDetail?>, t: Throwable) {
+                log.e("HeroDetailActivity", t.message)
+                view?.showError(t.message)
             }
 
             override fun onResponse(call: Call<HeroDetail?>, response: Response<HeroDetail?>) {
                 val heroDetail = response.body()
-
+                log.d("HeroDetailActivity", response.body().toString())
                 view?.showDetail(heroDetail)
+
             }
         })
     }
